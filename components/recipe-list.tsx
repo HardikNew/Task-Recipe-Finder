@@ -71,14 +71,14 @@ export function RecipeList() {
   return (
     <div>
       <h2 className="text-2xl font-bold mb-4">Recipes with your ingredients</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {recipes.map((recipe) => (
-          <Card key={recipe.id} className="overflow-hidden">
+          <Card key={recipe.id} className="flex flex-col h-full overflow-hidden">
             <CardHeader className="pb-2">
               <CardTitle>{recipe.title}</CardTitle>
               <CardDescription>Matches {recipe.matchedIngredients.length} of your ingredients</CardDescription>
             </CardHeader>
-            <CardContent>
+            <CardContent className="flex-grow">
               <div className="flex items-center gap-4 mb-4 text-sm text-muted-foreground">
                 <div className="flex items-center">
                   <Clock className="mr-1 h-4 w-4" />
@@ -112,7 +112,7 @@ export function RecipeList() {
                 </div>
               )}
             </CardContent>
-            <CardFooter>
+            <CardFooter className="mt-auto pt-4">
               <Link href={`/recipe/${recipe.id}?ingredients=${ingredientsParam}`} className="w-full">
                 <Button variant="default" className="w-full">
                   View Recipe
